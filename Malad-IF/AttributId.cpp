@@ -10,7 +10,7 @@ using namespace std;
 AttributId::AttributId(string name): Attribut(name)
 {}
 
-Valeur* AttributId::convert(string valeur)
+Valeur* AttributId::creerValeur(string valeur)
 {
 	unsigned int i = stoi(valeur);
 	return new IdValeur(i);

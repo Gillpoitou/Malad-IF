@@ -32,7 +32,7 @@ class AttributString : public Attribut
 
 public:
 //----------------------------------------------------- Public methods
-	Valeur* convert(string);
+	Valeur* creerValeur(string);
 	// Mode d'emploi :
 	//
 	// Contrat :

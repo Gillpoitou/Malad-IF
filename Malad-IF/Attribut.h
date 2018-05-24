@@ -30,8 +30,9 @@ class Attribut
 public:
 // ------------------------------------------------------------- Methods
 
-	virtual Valeur* convert(string) = 0;
+	virtual Valeur* creerValeur(string) = 0;
 
+	string getNom();
 //-------------------------------------------- Constructors - destructor
     Attribut ( const Attribut & unAttribut );
     // Mode d'emploi (constructeur de copie) :

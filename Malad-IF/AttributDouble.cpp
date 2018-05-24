@@ -4,7 +4,7 @@
 AttributDouble::AttributDouble(string name): Attribut(name)
 {}
 
-Valeur* AttributDouble::convert(string val)
+Valeur* AttributDouble::creerValeur(string val)
 {
 	double d = stod(val);
 	return new DoubleValeur(d);
