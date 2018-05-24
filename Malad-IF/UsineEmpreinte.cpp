@@ -30,7 +30,7 @@ void UsineEmpreinte::creerAttribut(pair<string, string> elementsFichier) {
 		formatEmpreinte.add(att);
 		break;
 	case "double":
-		Attribut att = Attribut(elementsFichier.second);
+		Attribut att = AttributDouble(elementsFichier.second);
 		formatEmpreinte.add(att);
 		break;
 	case "string":
