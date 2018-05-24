@@ -1,27 +1,10 @@
-#include <string>
+#include "Valeur.h"
 
-using namespace std;
-
-#if ! defined ( VALUE_H_ )
-#define VALUE_H_
-
-
-class Valeur
+Valeur::~Valeur()
 {
+}
 
-	public:
-		virtual ~Valeur()
-		{
-		}
-
-		void* value()
-		{
-			return val;
-		}
-
-	protected:
-		void* val;
-
-};
-
-#endif // VALUE_H_
+void* Valeur::getValeur()
+{
+	return valeur;
+}

@@ -1,33 +1,14 @@
-
-#include <string>
-
-#include "Attribute.cpp"
-#include "StringValeur.cpp"
+#include "String.h"
 
 using namespace std;
 
-#if ! defined ( STRING_H_ )
-#define STRING_H_
+String::String(string name): Attribut(name)
+{}
 
-
-class String : public Attribut
+Valeur* String::convert(string val)
 {
-	public:
+	return new StringValeur(val);
+}
 
-		String(string name): Attribut(name)
-		{
-			;
-		}
-
-		Valeur* convert(string val)
-		{
-			return new StringVal(val);
-		}
-
-		virtual ~String()
-		{
-			;
-		}
-};
-
-#endif // STRING_H_
+String::~String()
+{}

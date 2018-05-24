@@ -1,35 +1,14 @@
-
-#include <string>
-
-#include "Attribute.cpp"
-#include "DoubleValeur.cpp"
-
-using namespace std;
+#include "Double.h"
 
 
-#if ! defined ( DOUBLE_H_ )
-#define DOUBLE_H_
+Double::Double(string name): Attribut(name)
+{}
 
-class Double : public Attribut
+Valeur* Double::convert(string val)
 {
-	public:
+	double d = stod(val);
+	return new DoubleValeur(d);
+}
 
-		Double(string name): Attribut(name)
-		{
-			;
-		}
-
-		Valeur* convert(string val)
-		{
-			double d = stod(val);
-			return new DoubleVal(d);
-		}
-
-		virtual ~Double()
-		{
-			;
-		}
-};
-
-#endif // DOUBLE_H_
-
+Double::~Double()
+{}

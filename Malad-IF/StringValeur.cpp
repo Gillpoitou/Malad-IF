@@ -1,28 +1,15 @@
-#include "Attribute.cpp"
-
-#if ! defined ( STRINGVAL_H_ )
-#define STRINGVAL_H_
+#include "StringValeur.h"
 
 
-class StringVal : public Valeur
+StringValeur::StringValeur(string val)
 {
-	public:
+	this->valeur = new string(val);
+}
 
-		StringVal(string val)
-		{
-			this->val = new string(val);
-		}
+StringValeur::~StringValeur()
+{}
 
-		virtual ~StringVal()
-		{
-			;
-		}
-
-		void* value()
-		{
-			return val;
-		}
-
-};
-
-#endif // STRINGVAL_H_
+void* StringValeur::getValeur()
+{
+	return valeur;
+}

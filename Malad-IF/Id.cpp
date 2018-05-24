@@ -1,35 +1,19 @@
 
 #include <string>
 
-#include "Attribute.cpp"
-#include "IdValeur.cpp"
-
+#include "Id.h"
+#include "IdValeur.h"
 using namespace std;
 
 
-#if ! defined ( ID_H_ )
-#define ID_H_
+Id::Id(string name): Attribut(name)
+{}
 
-class Id : public Attribut
+Valeur* Id::convert(string valeur)
 {
-	public:
+	unsigned int i = stoi(valeur);
+	return new IdValeur(i);
+}
 
-		Id(string name): Attribut(name)
-		{
-			;
-		}
-
-		Valeur* convert(string val)
-		{
-			unsigned int i = stoi(val);
-			return new IdVal(i);
-		}
-
-		virtual ~Id()
-		{
-			;
-		}
-};
-
-#endif // ID_H_
-
+Id::~Id()
+{}

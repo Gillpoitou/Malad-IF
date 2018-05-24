@@ -1,27 +1,15 @@
-#include "Attribute.cpp"
+#include "Attribut.h"
+#include "DoubleValeur.h"
 
-#if ! defined ( DOUBLEVAL_H_ )
-#define DOUBLEVAL_H_
-
-class DoubleVal : public Valeur
+DoubleValeur::DoubleValeur(double valeur)
 {
-	public:
+	this->valeur = new double(valeur);
+}
 
-		DoubleVal(double val)
-		{
-			this->val = new double(val);
-		}
+DoubleValeur::~DoubleValeur()
+{}
 
-		virtual ~DoubleVal()
-		{
-			;
-		}
-
-		void* value()
-		{
-			return val;
-		}
-
-};
-
-#endif // DOUBLEVAL_H_
+void* DoubleValeur::getValeur()
+{
+	return valeur;
+}

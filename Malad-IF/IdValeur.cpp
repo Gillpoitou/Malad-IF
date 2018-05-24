@@ -1,28 +1,16 @@
-#include "Attribute.cpp"
+#include "Attribut.h"
+#include "IdValeur.h"
 
-#if ! defined ( IDVAL_H_ )
-#define IDVAL_H_
-
-
-class IdVal : public Valeur
+IdValeur::IdValeur(unsigned int val)
 {
-	public:
+	this->valeur = new unsigned int(val);
+}
 
-		IdVal(unsigned int val)
-		{
-			this->val = new unsigned int(val);
-		}
 
-		virtual ~IdVal()
-		{
-			;
-		}
+void* IdValeur::getValeur()
+{
+	return valeur;
+}
 
-		void* value()
-		{
-			return val;
-		}
-
-};
-
-#endif // IDVAL_H_
+IdValeur::~IdValeur()
+{}
