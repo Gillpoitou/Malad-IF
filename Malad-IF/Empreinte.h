@@ -8,11 +8,11 @@ copyright            : (C) 2018 par B3344
 //---------- Interface de la classe <Empreinte> (fichier Empreinte.h) ----------------
 #if ! defined ( EMPREINTE_H )
 #define Empreinte_H
-
+using namespace std;
 //--------------------------------------------------- Interfaces utilis�es
 #include <list>
-using namespace std;
 #include "Valeur.h"
+
 
 class Empreinte
 {
@@ -20,7 +20,7 @@ class Empreinte
 
 public:	
 	//----------------------------------------------------- M�thodes publiques
-	
+	Valeur getMaladie();
 	//Contrat
 	//
 	//mode d'emploi

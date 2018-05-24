@@ -1,23 +1,28 @@
 /*************************************************************************
 Empreinte contenant une liste d'attributs.
 -------------------
-début                : 04/2018
+dï¿½but                : 04/2018
 copyright            : (C) 2018 par B3344
 *************************************************************************/
 
-//---------- Réalisation de la classe <Empreinte> (fichier Empreinte.cpp) ------------
-
+//---------- Rï¿½alisation de la classe <Empreinte> (fichier Empreinte.cpp) ------------
+using namespace std;
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 #include <list>
-using namespace std
+
 //------------------------------------------------------ Include personnel
 #include "Empreinte.h"
-#include "Valeur"
+
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+		Valeur Empreinte::getMaladie(){
+
+			return nullptr;
+		}
+
+//----------------------------------------------------- Mï¿½thodes publiques
 
 //-------------------------------------------- Constructeurs - destructeur
 

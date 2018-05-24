@@ -17,29 +17,34 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "UsineEmpreinte.h"
 #include "Valeur.h"
+#include "Attribut.h"
+#include "AttributDouble.h"
+#include "AttributString.h"
+#include "AttributId.h"
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- M�thodes publiques
 string UsineEmpreinte::recupererIntituleAttribut(int numAttribut) {
-	return formatEmpreinte[numAttribut].nom;
+	return formatEmpreinte[numAttribut]->getNom();
+
 }
 void UsineEmpreinte::creerAttribut(pair<string, string> elementsFichier) {
 	switch (elementsFichier.first) {
 	case "int": 
-		Attribut att = AttributInt(elementsFichier.second);
-		formatEmpreinte.add(att);
+		Attribut* att = new AttributId(elementsFichier.second);
+		formatEmpreinte.insert(formatEmpreinte.end(),att);
 		break;
 	case "double":
-		Attribut att = AttributDouble(elementsFichier.second);
-		formatEmpreinte.add(att);
+		Attribut* att = new AttributDouble(elementsFichier.second);
+		formatEmpreinte.insert(formatEmpreinte.end(),att);
 		break;
 	case "string":
-		Attribut att = AttributString(elementsFichier.second);
-		formatEmpreinte.add(att);
+		Attribut* att = new AttributString(elementsFichier.second);
+		formatEmpreinte.insert(formatEmpreinte.end(),att);
 		break;
 	case "ID":
-		Attribut att =  AttributInt(elementsFichier.second);
-		formatEmpreinte.add(att);
+		Attribut* att =  new AttributId(elementsFichier.second);
+		formatEmpreinte.insert(formatEmpreinte.end(),att);
 		break;
 	}
 
@@ -50,8 +55,8 @@ Empreinte UsineEmpreinte::creerEmpreinte(list<string> elementsFichier) {
 
 	for (int i = 0; i < elementsFichier.size(); i++) {
 
-		Valeur val = formatEmpreinte[i].creerValeur(elementsFichier[i]);
-		listVal.add(val);
+		Valeur val = formatEmpreinte[i]->creerValeur(elementsFichier[i]);
+		listVal.insert(listVal.end(),val);
 	}
 
 	Empreinte em = Empreinte(listVal);

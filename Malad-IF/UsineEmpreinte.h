@@ -36,7 +36,7 @@ public:
 
 	//------------------------------------------PROTECTED
 protected:
-	list <Attribut> formatEmpreinte;
+	list <Attribut*> formatEmpreinte;
 
 };
 #endif // USINEEMPREINTE_H

@@ -20,7 +20,7 @@ class GestionMaladies {
 
 public:
 
-	bool insereDonnees(Empreinte aAjouter);
+	bool insererDonnees(Empreinte aAjouter);
 
 	bool initialiserApplication(string nomFichierref, string nomFichierMaladies);
 
