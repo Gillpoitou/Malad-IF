@@ -26,19 +26,19 @@ string UsineEmpreinte::recupererIntituleAttribut(int numAttribut) {
 void UsineEmpreinte::creerAttribut(pair<string, string> elementsFichier) {
 	switch (elementsFichier.first) {
 	case "int": 
-		Attribut att = Attribut<int>(elementsFichier.second);
+		Attribut att = AttributInt(elementsFichier.second);
 		formatEmpreinte.add(att);
 		break;
 	case "double":
-		Attribut att = Attribut<double>(elementsFichier.second);
+		Attribut att = Attribut(elementsFichier.second);
 		formatEmpreinte.add(att);
 		break;
 	case "string":
-		Attribut att = Attribut<string>(elementsFichier.second);
+		Attribut att = AttributString(elementsFichier.second);
 		formatEmpreinte.add(att);
 		break;
 	case "ID":
-		Attribut att =  Attribut<int>(elementsFichier.second);
+		Attribut att =  AttributInt(elementsFichier.second);
 		formatEmpreinte.add(att);
 		break;
 	}
