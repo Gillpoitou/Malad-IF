@@ -4,43 +4,46 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../Attribute.cpp \
-../Double.cpp \
+../Attribut.cpp \
+../AttributDouble.cpp \
+../AttributId.cpp \
+../AttributString.cpp \
 ../DoubleValeur.cpp \
 ../Empreinte.cpp \
 ../GestionMaladies.cpp \
-../Id.cpp \
+../IHM.cpp \
 ../IdValeur.cpp \
 ../Main.cpp \
-../String.cpp \
 ../StringValeur.cpp \
 ../UsineEmpreinte.cpp \
 ../Valeur.cpp 
 
 OBJS += \
-./Attribute.o \
-./Double.o \
+./Attribut.o \
+./AttributDouble.o \
+./AttributId.o \
+./AttributString.o \
 ./DoubleValeur.o \
 ./Empreinte.o \
 ./GestionMaladies.o \
-./Id.o \
+./IHM.o \
 ./IdValeur.o \
 ./Main.o \
-./String.o \
 ./StringValeur.o \
 ./UsineEmpreinte.o \
 ./Valeur.o 
 
 CPP_DEPS += \
-./Attribute.d \
-./Double.d \
+./Attribut.d \
+./AttributDouble.d \
+./AttributId.d \
+./AttributString.d \
 ./DoubleValeur.d \
 ./Empreinte.d \
 ./GestionMaladies.d \
-./Id.d \
+./IHM.d \
 ./IdValeur.d \
 ./Main.d \
-./String.d \
 ./StringValeur.d \
 ./UsineEmpreinte.d \
 ./Valeur.d 
@@ -50,7 +53,7 @@ CPP_DEPS += \
 %.o: ../%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross G++ Compiler'
-	g++ -std=c++0x -O0 -g3 -Wall -c -fmessage-length=0 std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	g++ -std=c++0x -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

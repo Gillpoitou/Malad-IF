@@ -20,20 +20,19 @@ class Empreinte
 
 public:	
 	//----------------------------------------------------- M�thodes publiques
-	Valeur getMaladie();
 	//Contrat
 	//
 	//mode d'emploi
 
 	
 	//-------------------------------------------- Constructeurs - destructeurs
-	Empreinte(list <Valeur> desValeurs);
+	Empreinte(list <Valeur*> desValeurs);
 
-	Empreinte(Empreinte &uneEmpreinte);
+	Empreinte(const Empreinte &uneEmpreinte);
 	
 	virtual ~Empreinte();
 	//------------------------------------------PROTECTED
 protected:
-	list <Valeur> valeurs;
+	list <Valeur*> valeurs;
 };
 #endif // Empreinte_H

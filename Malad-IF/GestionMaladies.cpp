@@ -7,10 +7,22 @@
 
 #include "GestionMaladies.h"
 
-bool GestionMaladies::insererDonnees(Empreinte aAjouter){
+bool GestionMaladies::insererDonnees(Empreinte aAjouter,string maladie){
 
 	ensembleReference.insert(ensembleReference.end(),aAjouter);
-	if(ensembleMaladies.find(aAjouter.))
+	map<string,vector<int>>::iterator mapMaladieItr= ensembleMaladies.find(maladie);
+	if(mapMaladieItr != ensembleMaladies.end()){
+
+		vector<int>index = mapMaladieItr->second;
+		index.insert(index.end(), ensembleReference.size()-1);
+
+	}else{
+
+		vector<int> index;
+		index.insert(index.end(),ensembleReference.size()-1);
+		const pair<string,vector<int>> element = make_pair(maladie,index);
+		ensembleMaladies.insert(ensembleMaladies.end(),element);
+	}
 
 	return true;
 }
@@ -20,27 +32,39 @@ bool GestionMaladies::initialiserApplication(string nomFichierref, string nomFic
 	return true;
 }
 
-list<string,double> GestionMaladies::diagnostiquerEmpreinte(Empreinte aAnalyser){
+list<pair<string,double>> GestionMaladies::diagnostiquerEmpreinte(Empreinte aAnalyser){
 
-	return nullptr;
+
 }
 
 Empreinte GestionMaladies::caracteriserMaladie(string nomMaladie){
 
+	map<string,vector<int>>::iterator mapMaladieItr= ensembleMaladies.find(nomMaladie);
+		if(mapMaladieItr != ensembleMaladies.end()){
 
-	return nullptr;
+			vector<int> indexEmpreintes = mapMaladieItr->second;
+
+
+			for(unsigned int i = 0 ; i < indexEmpreintes.size() ; i++){
+				Empreinte empreinteCourante = ensembleReference[indexEmpreintes[i]];
+
+			}
+
+		}
+
 }
 
 list<string> GestionMaladies::decouperString(string elementFichier){
 
-	return nullptr;
+
 }
 
 
 GestionMaladies::GestionMaladies() {
-	// TODO Auto-generated constructor stub
+	//TODO : Faire une classe abstraite.
 
 }
+
 
 GestionMaladies::~GestionMaladies() {
 	// TODO Auto-generated destructor stub

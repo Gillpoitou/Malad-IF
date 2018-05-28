@@ -10,8 +10,8 @@
 #include <fstream>
 #include <algorithm>
 
-#include "Attribute.cpp"
-#include "Double.cpp"
+#include "Attribut.h"
+#include "DoubleValeur.h"
 
 using namespace std;
 

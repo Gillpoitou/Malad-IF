@@ -9,7 +9,7 @@
 //---------- Realisation du module <IHM> (fichier IHM.cpp) ---------------
 
 /////////////////////////////////////////////////////////////////  INCLUDE
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 #include <string>
 #include <cstring>
@@ -112,9 +112,9 @@ void IHM::Menu ()
 	cout << "/*** Fermeture de l'application ***/" << endl;
 }
 
-int main()
-{
-	IHM interface;
-	interface.Menu();
-	return 1;
-}
+//int main()
+//{
+//	IHM interface;
+//	interface.Menu();
+//	return 1;
+//}

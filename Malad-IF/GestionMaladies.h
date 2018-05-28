@@ -9,10 +9,11 @@ using namespace std;
 
 #ifndef GESTIONMALADIES_H_
 #define GESTIONMALADIES_H_
-#include "Empreinte.h"
+#include "UsineEmpreinte.h"
 #include <string>
 #include <map>
 #include <vector>
+#include <list>
 #include <list>
 
 
@@ -20,11 +21,11 @@ class GestionMaladies {
 
 public:
 
-	bool insererDonnees(Empreinte aAjouter);
+	bool insererDonnees(Empreinte aAjouter,string maladie);
 
 	bool initialiserApplication(string nomFichierref, string nomFichierMaladies);
 
-	list<string,double> diagnostiquerEmpreinte(Empreinte aAnalyser);
+	list<pair<string,double>> diagnostiquerEmpreinte(Empreinte aAnalyser);
 
 	Empreinte caracteriserMaladie(string nomMaladie);
 
@@ -33,11 +34,13 @@ public:
 
 	//Constructeurs, destructeurs
 	GestionMaladies();
+	GestionMaladies(list<string> elementsFichier);
 	virtual ~GestionMaladies();
 
 private:
 	vector<Empreinte>ensembleReference;
 	map<string,vector<int>> ensembleMaladies;
+	UsineEmpreinte usineEmpreinte;
 
 };
 

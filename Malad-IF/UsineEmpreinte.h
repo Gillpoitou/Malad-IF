@@ -11,13 +11,12 @@ copyright            : (C) 2018 par B3344
 
 //--------------------------------------------------- Interfaces utilis�es
 using namespace std;
-#include <list>
+#include <vector>
 #include <string>
-#include <pair>
 #include "Attribut.h"
 #include "Empreinte.h"
 
-virtual class UsineEmpreinte
+ class UsineEmpreinte
 {
 	//----------------------------------------------------------------- PUBLIC
 
@@ -36,7 +35,7 @@ public:
 
 	//------------------------------------------PROTECTED
 protected:
-	list <Attribut*> formatEmpreinte;
+	vector <Attribut*> formatEmpreinte;
 
 };
 #endif // USINEEMPREINTE_H
