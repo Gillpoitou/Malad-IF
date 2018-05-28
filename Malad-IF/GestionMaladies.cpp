@@ -5,6 +5,10 @@
  *      Author: lsilvestri
  */
 
+#include "Valeur.h"
+#include "ValeurId.h"
+#include "ValeurDouble.h"
+#include "ValeurString.h"
 #include "GestionMaladies.h"
 
 bool GestionMaladies::insererDonnees(Empreinte aAjouter,string maladie){
@@ -40,17 +44,36 @@ list<pair<string,double>> GestionMaladies::diagnostiquerEmpreinte(Empreinte aAna
 Empreinte GestionMaladies::caracteriserMaladie(string nomMaladie){
 
 	map<string,vector<int>>::iterator mapMaladieItr= ensembleMaladies.find(nomMaladie);
-		if(mapMaladieItr != ensembleMaladies.end()){
+	if(mapMaladieItr != ensembleMaladies.end()){
+		//TODO : gerer le cas ou la maladie n'a pas d'empreintes associées
+		vector<int> indexEmpreintes = mapMaladieItr->second;
 
-			vector<int> indexEmpreintes = mapMaladieItr->second;
+		Empreinte resultat = usineEmpreinte.creerEmpreinte();
+		list<Valeur*> *valeurResult = resultat.getValeurs();
+		for(unsigned int i = 0 ; i < indexEmpreintes.size() ; i++){
+			Empreinte empreinteCourante = ensembleReference[indexEmpreintes[i]];
+			list<Valeur*>*valeursCourantes = empreinteCourante.getValeurs();
+			list<Valeur*>::iterator parcours;
+			for(parcours = valeursCourantes->begin();parcours!= valeursCourantes->end();parcours++){
+				if(ValeurDouble* vd = dynamic_cast<ValeurDouble*>(*parcours))
+				{
 
+				}
 
-			for(unsigned int i = 0 ; i < indexEmpreintes.size() ; i++){
-				Empreinte empreinteCourante = ensembleReference[indexEmpreintes[i]];
+				if(ValeurId* vi = dynamic_cast<ValeurId*>(*parcours))
+				{
+					}
+
+				if(ValeurString* vs = dynamic_cast<ValeurString*>(valeur))
+				{
+				}
 
 			}
 
+
 		}
+
+	}
 
 }
 

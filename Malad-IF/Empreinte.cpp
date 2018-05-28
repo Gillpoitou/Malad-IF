@@ -19,6 +19,9 @@ using namespace std;
 
 
 //----------------------------------------------------- M�thodes publiques
+list<Valeur*>* Empreinte::getValeurs(){
+	return &valeurs;
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 

@@ -27,6 +27,9 @@ public:
 
 	Empreinte creerEmpreinte(list<string> elementsFichier);
 	//Cr�er une empreinte � partir d'une liste de valeurs
+
+	Empreinte creerEmpreinte();
+	//Cree une empreinte vide
 	string recupererIntituleAttribut(int numAttribut);
 	//Permet de r�cup�rer le nom d'un attribut en utilisant son index
 	//----------------------------------------------------Constructeurs-Destructeur

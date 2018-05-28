@@ -20,9 +20,7 @@ class Empreinte
 
 public:	
 	//----------------------------------------------------- M�thodes publiques
-	//Contrat
-	//
-	//mode d'emploi
+	list<Valeur*>* getValeurs();
 
 	
 	//-------------------------------------------- Constructeurs - destructeurs

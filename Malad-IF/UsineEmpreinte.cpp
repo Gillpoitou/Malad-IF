@@ -28,6 +28,30 @@ string UsineEmpreinte::recupererIntituleAttribut(int numAttribut) {
 	return formatEmpreinte[numAttribut]->getNom();
 
 }
+Empreinte UsineEmpreinte::creerEmpreinte(list<string> elementsFichier) {
+
+	list<Valeur*> listVal;
+	list<string>::iterator parcours = elementsFichier.begin();
+	for (unsigned int i = 0; i < elementsFichier.size(); i++) {
+
+		Valeur* val = formatEmpreinte[i]->creerValeur(*parcours);
+		listVal.insert(listVal.end(),val);
+		parcours++;
+	}
+
+	Empreinte em = Empreinte(listVal);
+	return em;
+}
+
+Empreinte UsineEmpreinte::creerEmpreinte(){
+	list<Valeur*> listVal;
+	for(unsigned int i =0;i<formatEmpreinte.size();i++){
+		Valeur* val = formatEmpreinte[i]->creerValeur(0);
+		listVal.insert(listVal.end(),val);
+	}
+	Empreinte em = Empreinte(listVal);
+	return em;
+}
 void UsineEmpreinte::creerAttribut(pair<string, string> elementsFichier) {
 
 	if(elementsFichier.first == "int") {
@@ -53,20 +77,7 @@ void UsineEmpreinte::creerAttribut(pair<string, string> elementsFichier) {
 	}
 
 }
-Empreinte UsineEmpreinte::creerEmpreinte(list<string> elementsFichier) {
 
-	list<Valeur*> listVal;
-	list<string>::iterator parcours = elementsFichier.begin();
-	for (unsigned int i = 0; i < elementsFichier.size(); i++) {
-
-		Valeur* val = formatEmpreinte[i]->creerValeur(*parcours);
-		listVal.insert(listVal.end(),val);
-		parcours++;
-	}
-
-	Empreinte em = Empreinte(listVal);
-	return em;
-}
 
 //-------------------------------------------- Constructeurs - destructeur
 UsineEmpreinte::UsineEmpreinte() {
