@@ -4,53 +4,53 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../Attribute.cpp \
-../Double.cpp \
-../DoubleValeur.cpp \
+../Attribut.cpp \
+../AttributDouble.cpp \
+../AttributId.cpp \
+../AttributString.cpp \
 ../Empreinte.cpp \
 ../GestionMaladies.cpp \
-../Id.cpp \
-../IdValeur.cpp \
 ../Main.cpp \
-../String.cpp \
-../StringValeur.cpp \
 ../UsineEmpreinte.cpp \
-../Valeur.cpp 
+../Valeur.cpp \
+../ValeurDouble.cpp \
+../ValeurId.cpp \
+../ValeurString.cpp 
 
 OBJS += \
-./Attribute.o \
-./Double.o \
-./DoubleValeur.o \
+./Attribut.o \
+./AttributDouble.o \
+./AttributId.o \
+./AttributString.o \
 ./Empreinte.o \
 ./GestionMaladies.o \
-./Id.o \
-./IdValeur.o \
 ./Main.o \
-./String.o \
-./StringValeur.o \
 ./UsineEmpreinte.o \
-./Valeur.o 
+./Valeur.o \
+./ValeurDouble.o \
+./ValeurId.o \
+./ValeurString.o 
 
 CPP_DEPS += \
-./Attribute.d \
-./Double.d \
-./DoubleValeur.d \
+./Attribut.d \
+./AttributDouble.d \
+./AttributId.d \
+./AttributString.d \
 ./Empreinte.d \
 ./GestionMaladies.d \
-./Id.d \
-./IdValeur.d \
 ./Main.d \
-./String.d \
-./StringValeur.d \
 ./UsineEmpreinte.d \
-./Valeur.d 
+./Valeur.d \
+./ValeurDouble.d \
+./ValeurId.d \
+./ValeurString.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
 %.o: ../%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross G++ Compiler'
-	g++ -std=c++0x -O0 -g3 -Wall -c -fmessage-length=0 std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	g++ -std=c++11 -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

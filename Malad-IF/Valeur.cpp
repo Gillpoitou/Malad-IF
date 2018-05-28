@@ -3,8 +3,3 @@
 Valeur::~Valeur()
 {
 }
-
-void* Valeur::getValeur()
-{
-	return valeur;
-}

@@ -71,7 +71,7 @@ public:
 
 protected:
 //----------------------------------------------------- Protected fields
-    void* valeur;
+//    void* valeur;
 
 //----------------------------------------------------- Private methods
 

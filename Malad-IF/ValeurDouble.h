@@ -1,55 +1,49 @@
 /*************************************************************************
-                           String  -  description
+                           DoubleValeur  -  description
                              -------------------
     start                : 24 mai 2018
     copyright            : (C) 2018 by lsterner
 *************************************************************************/
 
-//---------- Interface of the class <String> (fichier String.h) ------
-#if ! defined ( ATTRIBUTSTRING_H_ )
-#define ATTRIBUTSTRING_H_
+//---------- Interface of the class <DoubleValeur> (fichier DoubleValeur.h) ------
+#if ! defined ( VALEURDOUBLE_H_ )
+#define VALEURDOUBLE_H_
 
 //--------------------------------------------------- Used interfaces
-#include <string>
-
-#include "Attribut.h"
-
-using namespace std;
+#include "Valeur.h"
 //------------------------------------------------------------- Constants 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle of the class <String>
+// Rôle of the class <DoubleValeur>
 //
 //
 //------------------------------------------------------------------------ 
 
-class AttributString : public Attribut
+class ValeurDouble : public Valeur
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Public methods
-	Valeur* creerValeur(string);
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
-
-//------------------------------------------------- Operator overload
-
-
-//-------------------------------------------- Constructors - destructor
-
-	AttributString(string name);
+    double* getValeur();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~AttributString ( );
+
+
+//-------------------------------------------- Constructors - destructor
+
+	ValeurDouble(double val);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    virtual ~ValeurDouble ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -58,12 +52,13 @@ public:
 //------------------------------------------------------------------ PRIVATE 
 
 protected:
-//----------------------------------------------------- Protected methods
+//----------------------------------------------------- Protected fields
+    double* valeur;
 
 //----------------------------------------------------- Private methods
 
 };
 
-//--------------------------- Other independant definitions for <String>
+//--------------------------- Other independant definitions for <DoubleValeur>
 
-#endif // ATTRIBUTSTRING_H_
+#endif // VALEURDOUBLE_H_

@@ -29,34 +29,39 @@ string UsineEmpreinte::recupererIntituleAttribut(int numAttribut) {
 
 }
 void UsineEmpreinte::creerAttribut(pair<string, string> elementsFichier) {
-	switch (elementsFichier.first) {
-	case "int": 
+
+	if(elementsFichier.first == "int") {
+
 		Attribut* att = new AttributId(elementsFichier.second);
 		formatEmpreinte.insert(formatEmpreinte.end(),att);
-		break;
-	case "double":
+
+	}else if(elementsFichier.first == "double"){
+
 		Attribut* att = new AttributDouble(elementsFichier.second);
 		formatEmpreinte.insert(formatEmpreinte.end(),att);
-		break;
-	case "string":
+
+	}else if(elementsFichier.first == "string"){
+
 		Attribut* att = new AttributString(elementsFichier.second);
 		formatEmpreinte.insert(formatEmpreinte.end(),att);
-		break;
-	case "ID":
+
+	}else if(elementsFichier.first == "ID"){
+
 		Attribut* att =  new AttributId(elementsFichier.second);
 		formatEmpreinte.insert(formatEmpreinte.end(),att);
-		break;
+
 	}
 
 }
 Empreinte UsineEmpreinte::creerEmpreinte(list<string> elementsFichier) {
 
-	list<Valeur> listVal;
+	list<Valeur*> listVal;
+	list<string>::iterator parcours = elementsFichier.begin();
+	for (unsigned int i = 0; i < elementsFichier.size(); i++) {
 
-	for (int i = 0; i < elementsFichier.size(); i++) {
-
-		Valeur val = formatEmpreinte[i]->creerValeur(elementsFichier[i]);
+		Valeur* val = formatEmpreinte[i]->creerValeur(*parcours);
 		listVal.insert(listVal.end(),val);
+		parcours++;
 	}
 
 	Empreinte em = Empreinte(listVal);
@@ -67,6 +72,7 @@ Empreinte UsineEmpreinte::creerEmpreinte(list<string> elementsFichier) {
 UsineEmpreinte::UsineEmpreinte() {
 	
 }
+
 UsineEmpreinte::~UsineEmpreinte()
 {
 	

@@ -11,24 +11,23 @@ copyright            : (C) 2018 par B3344
 
 //--------------------------------------------------- Interfaces utilis�es
 using namespace std;
-#include <list>
+#include <vector>
 #include <string>
-#include <pair>
 #include "Attribut.h"
 #include "Empreinte.h"
 
-virtual class UsineEmpreinte
+ class UsineEmpreinte
 {
 	//----------------------------------------------------------------- PUBLIC
 
 public:
 	//----------------------------------------------------- M�thodes publiques
-	void creerAttribut(pair<string,string> elementsFichier);
+	static void creerAttribut(pair<string,string> elementsFichier);
 	//Ajoute un attribut du type ElementsFichier.first et dont le nom est ElementsFichier.second
 
-	Empreinte creerEmpreinte(list<string> elementsFichier);
+	static Empreinte creerEmpreinte(list<string> elementsFichier);
 	//Cr�er une empreinte � partir d'une liste de valeurs
-	string recupererIntituleAttribut(int numAttribut);
+	static string recupererIntituleAttribut(int numAttribut);
 	//Permet de r�cup�rer le nom d'un attribut en utilisant son index
 	//----------------------------------------------------Constructeurs-Destructeur
 	UsineEmpreinte();
@@ -36,7 +35,7 @@ public:
 
 	//------------------------------------------PROTECTED
 protected:
-	list <Attribut*> formatEmpreinte;
+	vector <Attribut*> formatEmpreinte;
 
 };
 #endif // USINEEMPREINTE_H

@@ -1,55 +1,57 @@
 /*************************************************************************
-                           String  -  description
+                           StringValeur  -  description
                              -------------------
     start                : 24 mai 2018
     copyright            : (C) 2018 by lsterner
 *************************************************************************/
 
-//---------- Interface of the class <String> (fichier String.h) ------
-#if ! defined ( ATTRIBUTSTRING_H_ )
-#define ATTRIBUTSTRING_H_
+//---------- Interface of the class <StringValeur> (fichier StringValeur.h) ------
+#if ! defined ( VALEURSTRING_H_ )
+#define VALEURSTRING_H_
 
 //--------------------------------------------------- Used interfaces
 #include <string>
 
-#include "Attribut.h"
+#include "Valeur.h"
+
 
 using namespace std;
+
+
 //------------------------------------------------------------- Constants 
+
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle of the class <String>
+// Rôle of the class <StringValeur>
 //
 //
 //------------------------------------------------------------------------ 
 
-class AttributString : public Attribut
+class ValeurString : public Valeur
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Public methods
-	Valeur* creerValeur(string);
+	string* getValeur();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
 
-//------------------------------------------------- Operator overload
-
 
 //-------------------------------------------- Constructors - destructor
 
-	AttributString(string name);
+	ValeurString(string val);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~AttributString ( );
+    virtual ~ValeurString ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -59,11 +61,11 @@ public:
 
 protected:
 //----------------------------------------------------- Protected methods
-
+    string* valeur;
 //----------------------------------------------------- Private methods
 
 };
 
-//--------------------------- Other independant definitions for <String>
+//--------------------------- Other independant definitions for <StringValeur>
 
-#endif // ATTRIBUTSTRING_H_
+#endif // VALEURSTRING_H_

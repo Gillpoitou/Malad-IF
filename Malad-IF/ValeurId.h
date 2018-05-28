@@ -1,55 +1,61 @@
 /*************************************************************************
-                           String  -  description
+                           IdValeur  -  description
                              -------------------
     start                : 24 mai 2018
     copyright            : (C) 2018 by lsterner
 *************************************************************************/
 
-//---------- Interface of the class <String> (fichier String.h) ------
-#if ! defined ( ATTRIBUTSTRING_H_ )
-#define ATTRIBUTSTRING_H_
+//---------- Interface of the class <IdValeur> (fichier IdValeur.h) ------
+#if ! defined ( VALEURID_H_ )
+#define VALEURID_H_
 
 //--------------------------------------------------- Used interfaces
 #include <string>
 
-#include "Attribut.h"
+#include "Valeur.h"
+
 
 using namespace std;
+
 //------------------------------------------------------------- Constants 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle of the class <String>
+// Rôle of the class <IdValeur>
 //
 //
 //------------------------------------------------------------------------ 
 
-class AttributString : public Attribut
+class ValeurId : public Valeur
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Public methods
-	Valeur* creerValeur(string);
+	unsigned int* getValeur();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
 
-//------------------------------------------------- Operator overload
 
 
 //-------------------------------------------- Constructors - destructor
+    ValeurId ( const ValeurId & unIdValeur );
+    // Mode d'emploi (constructeur de copie) :
+    //
+    // Contrat :
+    //
 
-	AttributString(string name);
+    ValeurId(unsigned int valeur);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~AttributString ( );
+    virtual ~ValeurId ();
     // Mode d'emploi :
     //
     // Contrat :
@@ -59,11 +65,11 @@ public:
 
 protected:
 //----------------------------------------------------- Protected methods
-
+    unsigned int* valeur;
 //----------------------------------------------------- Private methods
 
 };
 
-//--------------------------- Other independant definitions for <String>
+//--------------------------- Other independant definitions for <IdValeur>
 
-#endif // ATTRIBUTSTRING_H_
+#endif // VALEURID_H_

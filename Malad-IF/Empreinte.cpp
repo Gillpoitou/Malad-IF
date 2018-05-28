@@ -17,22 +17,25 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-		Valeur Empreinte::getMaladie(){
-
-			return nullptr;
-		}
 
 //----------------------------------------------------- M�thodes publiques
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Empreinte::Empreinte(list<Valeur> desvaleurs)
+Empreinte::Empreinte(list<Valeur*> desvaleurs)
 {
-	valeurs = desvaleurs;
+	list<Valeur*>::iterator parcours ;
+	for(parcours= desvaleurs.begin(); parcours != desvaleurs.end(); parcours++){
+		valeurs.insert(valeurs.end(),*parcours);
+	}
 }
-Empreinte::Empreinte(Empreinte &uneEmpreinte)
+Empreinte::Empreinte(const Empreinte &uneEmpreinte)
 {
-	valeurs = uneEmpreinte.valeurs;
+	list <Valeur*>desvaleurs = uneEmpreinte.valeurs;
+	list<Valeur*>::iterator parcours ;
+	for(parcours= desvaleurs.begin(); parcours != desvaleurs.end(); parcours++){
+		valeurs.insert(valeurs.end(),*parcours);
+	}
 }
 Empreinte::~Empreinte()
 {
