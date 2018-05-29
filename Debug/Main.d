@@ -1,7 +1,5 @@
-Main.o: ../Main.cpp ../Attribut.h ../Valeur.h ../DoubleValeur.h
+Main.o: ../Main.cpp ../Attribut.h ../Valeur.h
 
 ../Attribut.h:
 
 ../Valeur.h:
-
-../DoubleValeur.h:

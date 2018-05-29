@@ -13,7 +13,6 @@
 #include <string>
 
 #include "Attribut.h"
-#include "StringValeur.h"
 
 using namespace std;
 //------------------------------------------------------------- Constants 

@@ -14,7 +14,7 @@ using namespace std;
 #include <map>
 #include <vector>
 #include <list>
-#include <list>
+
 
 
 class GestionMaladies {
@@ -30,6 +30,8 @@ public:
 	Empreinte caracteriserMaladie(string nomMaladie);
 
 	list<string> decouperString(string elementFichier);
+	
+	list<string> listerMaladies();
 
 
 	//Constructeurs, destructeurs
@@ -37,10 +39,14 @@ public:
 	GestionMaladies(list<string> elementsFichier);
 	virtual ~GestionMaladies();
 
-private:
+protected:
 	vector<Empreinte>ensembleReference;
-	map<string,vector<int>> ensembleMaladies;
+	map<string,vector<unsigned int>> ensembleMaladies;
 	UsineEmpreinte usineEmpreinte;
+	
+	//methodes privees
+	vector<vector<string>> readValues(string filename, unsigned int fieldCount, bool skipFirstLine);
+	vector<pair<string, string>> readDescription(string filename, bool skipFirstLine);
 
 };
 

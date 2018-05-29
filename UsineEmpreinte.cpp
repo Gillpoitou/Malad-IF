@@ -23,6 +23,10 @@ using namespace std;
 #include "AttributId.h"
 //----------------------------------------------------------------- PUBLIC
 
+vector<Attribut*> UsineEmpreinte::formatEmpreinte;
+
+
+
 //----------------------------------------------------- M�thodes publiques
 string UsineEmpreinte::recupererIntituleAttribut(int numAttribut) {
 	return formatEmpreinte[numAttribut]->getNom();
@@ -54,24 +58,24 @@ Empreinte UsineEmpreinte::creerEmpreinte(){
 }
 void UsineEmpreinte::creerAttribut(pair<string, string> elementsFichier) {
 
-	if(elementsFichier.first == "int") {
+	if(elementsFichier.second == "int") {
 
-		Attribut* att = new AttributId(elementsFichier.second);
+		Attribut* att = new AttributId(elementsFichier.first);
 		formatEmpreinte.insert(formatEmpreinte.end(),att);
 
-	}else if(elementsFichier.first == "double"){
+	}else if(elementsFichier.second == "double"){
 
-		Attribut* att = new AttributDouble(elementsFichier.second);
+		Attribut* att = new AttributDouble(elementsFichier.first);
 		formatEmpreinte.insert(formatEmpreinte.end(),att);
 
-	}else if(elementsFichier.first == "string"){
+	}else if(elementsFichier.second == "string"){
 
-		Attribut* att = new AttributString(elementsFichier.second);
+		Attribut* att = new AttributString(elementsFichier.first);
 		formatEmpreinte.insert(formatEmpreinte.end(),att);
 
-	}else if(elementsFichier.first == "ID"){
+	}else if(elementsFichier.second == "ID"){
 
-		Attribut* att =  new AttributId(elementsFichier.second);
+		Attribut* att =  new AttributId(elementsFichier.first);
 		formatEmpreinte.insert(formatEmpreinte.end(),att);
 
 	}

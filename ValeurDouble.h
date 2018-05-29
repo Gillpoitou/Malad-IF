@@ -1,56 +1,49 @@
 /*************************************************************************
-                           Double  -  description
+                           DoubleValeur  -  description
                              -------------------
     start                : 24 mai 2018
     copyright            : (C) 2018 by lsterner
 *************************************************************************/
 
-//---------- Interface of the class <Double> (fichier Double.h) ------
-#if ! defined ( ATTRIBUTDOUBLE_H_ )
-#define ATTRIBUTDOUBLE_H_
+//---------- Interface of the class <DoubleValeur> (fichier DoubleValeur.h) ------
+#if ! defined ( VALEURDOUBLE_H_ )
+#define VALEURDOUBLE_H_
 
 //--------------------------------------------------- Used interfaces
-
-#include <string>
-
-#include "Attribut.h"
-
-
-using namespace std;
-
+#include "Valeur.h"
 //------------------------------------------------------------- Constants 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle of the class <Double>
+// Rôle of the class <DoubleValeur>
 //
 //
 //------------------------------------------------------------------------ 
 
-class AttributDouble : public Attribut
+class ValeurDouble : public Valeur
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Public methods
-	Valeur* creerValeur(string);
-	// Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//-------------------------------------------- Constructors - destructor
-
-
-	AttributDouble(string name);
+    double* getValeur();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~AttributDouble ( );
+
+
+//-------------------------------------------- Constructors - destructor
+
+	ValeurDouble(double val);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    virtual ~ValeurDouble ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -59,12 +52,13 @@ public:
 //------------------------------------------------------------------ PRIVATE 
 
 protected:
-//----------------------------------------------------- Protected methods
+//----------------------------------------------------- Protected fields
+    double* valeur;
 
 //----------------------------------------------------- Private methods
 
 };
 
-//--------------------------- Other independant definitions for <Double>
+//--------------------------- Other independant definitions for <DoubleValeur>
 
-#endif // ATTRIBUTDOUBLE_H_
+#endif // VALEURDOUBLE_H_

@@ -11,7 +11,6 @@
 #include <algorithm>
 
 #include "Attribut.h"
-#include "DoubleValeur.h"
 
 using namespace std;
 

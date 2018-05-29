@@ -1,5 +1,5 @@
 AttributString.o: ../AttributString.cpp ../AttributString.h ../Attribut.h \
- ../Valeur.h ../StringValeur.h
+ ../Valeur.h ../ValeurString.h
 
 ../AttributString.h:
 
@@ -7,4 +7,4 @@ AttributString.o: ../AttributString.cpp ../AttributString.h ../Attribut.h \
 
 ../Valeur.h:
 
-../StringValeur.h:
+../ValeurString.h:

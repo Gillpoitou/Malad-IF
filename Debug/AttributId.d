@@ -1,5 +1,5 @@
 AttributId.o: ../AttributId.cpp ../AttributId.h ../Attribut.h ../Valeur.h \
- ../IdValeur.h
+ ../ValeurId.h
 
 ../AttributId.h:
 
@@ -7,4 +7,4 @@ AttributId.o: ../AttributId.cpp ../AttributId.h ../Attribut.h ../Valeur.h \
 
 ../Valeur.h:
 
-../IdValeur.h:
+../ValeurId.h:

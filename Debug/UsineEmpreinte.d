@@ -1,6 +1,6 @@
 UsineEmpreinte.o: ../UsineEmpreinte.cpp ../UsineEmpreinte.h ../Attribut.h \
- ../Valeur.h ../Empreinte.h ../AttributDouble.h ../DoubleValeur.h \
- ../AttributString.h ../StringValeur.h ../AttributId.h
+ ../Valeur.h ../Empreinte.h ../AttributDouble.h ../AttributString.h \
+ ../AttributId.h
 
 ../UsineEmpreinte.h:
 
@@ -12,10 +12,6 @@ UsineEmpreinte.o: ../UsineEmpreinte.cpp ../UsineEmpreinte.h ../Attribut.h \
 
 ../AttributDouble.h:
 
-../DoubleValeur.h:
-
 ../AttributString.h:
-
-../StringValeur.h:
 
 ../AttributId.h:

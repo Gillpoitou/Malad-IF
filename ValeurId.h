@@ -1,19 +1,18 @@
 /*************************************************************************
-                           Double  -  description
+                           IdValeur  -  description
                              -------------------
     start                : 24 mai 2018
     copyright            : (C) 2018 by lsterner
 *************************************************************************/
 
-//---------- Interface of the class <Double> (fichier Double.h) ------
-#if ! defined ( ATTRIBUTDOUBLE_H_ )
-#define ATTRIBUTDOUBLE_H_
+//---------- Interface of the class <IdValeur> (fichier IdValeur.h) ------
+#if ! defined ( VALEURID_H_ )
+#define VALEURID_H_
 
 //--------------------------------------------------- Used interfaces
-
 #include <string>
 
-#include "Attribut.h"
+#include "Valeur.h"
 
 
 using namespace std;
@@ -23,34 +22,40 @@ using namespace std;
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle of the class <Double>
+// Rôle of the class <IdValeur>
 //
 //
 //------------------------------------------------------------------------ 
 
-class AttributDouble : public Attribut
+class ValeurId : public Valeur
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Public methods
-	Valeur* creerValeur(string);
+	unsigned int* getValeur();
 	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+
+
+
+//-------------------------------------------- Constructors - destructor
+    ValeurId ( const ValeurId & unIdValeur );
+    // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-
-//-------------------------------------------- Constructors - destructor
-
-
-	AttributDouble(string name);
+    ValeurId(unsigned int valeur);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~AttributDouble ( );
+    virtual ~ValeurId ();
     // Mode d'emploi :
     //
     // Contrat :
@@ -60,11 +65,11 @@ public:
 
 protected:
 //----------------------------------------------------- Protected methods
-
+    unsigned int* valeur;
 //----------------------------------------------------- Private methods
 
 };
 
-//--------------------------- Other independant definitions for <Double>
+//--------------------------- Other independant definitions for <IdValeur>
 
-#endif // ATTRIBUTDOUBLE_H_
+#endif // VALEURID_H_

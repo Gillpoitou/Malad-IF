@@ -22,15 +22,15 @@ using namespace std;
 
 public:
 	//----------------------------------------------------- M�thodes publiques
-	void creerAttribut(pair<string,string> elementsFichier);
+	static void creerAttribut(pair<string,string> elementsFichier);
 	//Ajoute un attribut du type ElementsFichier.first et dont le nom est ElementsFichier.second
 
-	Empreinte creerEmpreinte(list<string> elementsFichier);
+	static Empreinte creerEmpreinte(list<string> elementsFichier);
 	//Cr�er une empreinte � partir d'une liste de valeurs
 
-	Empreinte creerEmpreinte();
+	static Empreinte creerEmpreinte();
 	//Cree une empreinte vide
-	string recupererIntituleAttribut(int numAttribut);
+	static string recupererIntituleAttribut(int numAttribut);
 	//Permet de r�cup�rer le nom d'un attribut en utilisant son index
 	//----------------------------------------------------Constructeurs-Destructeur
 	UsineEmpreinte();
@@ -38,7 +38,7 @@ public:
 
 	//------------------------------------------PROTECTED
 protected:
-	vector <Attribut*> formatEmpreinte;
+	static vector <Attribut*> formatEmpreinte;
 
 };
 #endif // USINEEMPREINTE_H

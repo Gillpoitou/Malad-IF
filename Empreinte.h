@@ -7,7 +7,7 @@ copyright            : (C) 2018 par B3344
 
 //---------- Interface de la classe <Empreinte> (fichier Empreinte.h) ----------------
 #if ! defined ( EMPREINTE_H )
-#define Empreinte_H
+#define EMPREINTE_H
 using namespace std;
 //--------------------------------------------------- Interfaces utilis�es
 #include <list>
