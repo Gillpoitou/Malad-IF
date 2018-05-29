@@ -13,6 +13,7 @@ copyright            : (C) 2018 par B3344
 using namespace std;
 #include <list>
 #include <string>
+#include <iostream>
 
 //------------------------------------------------------ Include personnel
 #include "UsineEmpreinte.h"
@@ -23,42 +24,46 @@ using namespace std;
 #include "AttributId.h"
 //----------------------------------------------------------------- PUBLIC
 
+
+vector<Attribut*> UsineEmpreinte::formatEmpreinte;
+
 //----------------------------------------------------- M�thodes publiques
 string UsineEmpreinte::recupererIntituleAttribut(int numAttribut) {
 	return formatEmpreinte[numAttribut]->getNom();
 
 }
-void UsineEmpreinte::creerAttribut(pair<string, string> elementsFichier) {
+void UsineEmpreinte::creerAttribut(pair<string, string> elementsFichier) { // MODIFIED : inversé premier et second
 
-	if(elementsFichier.first == "int") {
-
-		Attribut* att = new AttributId(elementsFichier.second);
-		formatEmpreinte.insert(formatEmpreinte.end(),att);
-
-	}else if(elementsFichier.first == "double"){
-
-		Attribut* att = new AttributDouble(elementsFichier.second);
-		formatEmpreinte.insert(formatEmpreinte.end(),att);
-
-	}else if(elementsFichier.first == "string"){
-
-		Attribut* att = new AttributString(elementsFichier.second);
-		formatEmpreinte.insert(formatEmpreinte.end(),att);
-
-	}else if(elementsFichier.first == "ID"){
-
-		Attribut* att =  new AttributId(elementsFichier.second);
+	if(elementsFichier.second == "int")
+	{
+		Attribut* att = new AttributId(elementsFichier.first);
 		formatEmpreinte.insert(formatEmpreinte.end(),att);
 
 	}
+	else if (elementsFichier.second == "double")
+	{
+		Attribut* att = new AttributDouble(elementsFichier.first);
+		formatEmpreinte.insert(formatEmpreinte.end(),att);
 
+	}else if(elementsFichier.second == "string"){
+
+		Attribut* att = new AttributString(elementsFichier.first);
+		formatEmpreinte.insert(formatEmpreinte.end(),att);
+
+	}else if(elementsFichier.second == "ID"){
+
+		Attribut* att =  new AttributId(elementsFichier.first);
+		formatEmpreinte.insert(formatEmpreinte.end(),att);
+
+	}
 }
 Empreinte UsineEmpreinte::creerEmpreinte(list<string> elementsFichier) {
 
 	list<Valeur*> listVal;
 	list<string>::iterator parcours = elementsFichier.begin();
-	for (unsigned int i = 0; i < elementsFichier.size(); i++) {
-
+	for (unsigned int i = 0; i < elementsFichier.size(); i++)
+	{
+		cout << formatEmpreinte[i] << endl;
 		Valeur* val = formatEmpreinte[i]->creerValeur(*parcours);
 		listVal.insert(listVal.end(),val);
 		parcours++;

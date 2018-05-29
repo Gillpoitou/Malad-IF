@@ -52,9 +52,9 @@ bool GestionMaladies::insererDonnees(Empreinte aAjouter, string maladie)
 	else
 	{
 
-		vector<int> index;
+		vector<unsigned int> index;
 		index.insert(index.end(), ensembleReference.size() - 1);
-		const pair<string, vector<int>> element = make_pair(maladie, index);
+		const pair<string, vector<unsigned int>> element = make_pair(maladie, index);
 		ensembleMaladies.insert(ensembleMaladies.end(), element);
 	}
 
@@ -66,57 +66,26 @@ bool GestionMaladies::initialiserApplication(string nomFichierRef, string nomFic
 {
 	vector<pair<string, string>> desc = readDescription(nomFichierRef, true);
 
-	if (desc.empty()) return false;
+	if (desc.empty())
+		return false;
 
 	vector<vector<string>> vals = readValues(nomFichierMeta, desc.size() + 1 /* disease */, true);
 
-	if (vals.empty()) return false;
+	if (vals.empty())
+		return false;
 
 	for (pair<string, string>& paire : desc)
-		UsineEmpreinte.creerAttribut(paire);
+		UsineEmpreinte::creerAttribut(paire);
 
 
 	for (vector<string> vec : vals)
 	{
-		vector<string> attr(vec.begin(), vec.end() - 1);
+		list<string> attr(vec.begin(), vec.end() - 1);
 		string maladie = vec[desc.size()];
 
-//		for (unsigned int i = 0; i < desc.size(); i++)
-//			em.push_back(attributs[i]->creerValeur(vec[i]));
-
-		Empreinte em = UsineEmpreinte.creerEmpreinte(attr);
+		Empreinte em = UsineEmpreinte::creerEmpreinte(attr);
 
 		insererDonnees(em, maladie);
-	}
-
-//	for (list<Valeur*> em : empreintes)
-//	{
-//		int i = 0;
-//		for (Valeur* valeur : em)
-//		{
-//
-//			// https://stackoverflow.com/questions/500493/c-equivalent-of-instanceof
-//			if(ValeurDouble* vd = dynamic_cast<ValeurDouble*>(valeur))
-//				cout << attributs[i]->getNom() << "=" <<  *((double*) (vd->getValeur())) << endl;
-//
-//			if(ValeurId* vi = dynamic_cast<ValeurId*>(valeur))
-//				cout << attributs[i]->getNom() << "=" << *((unsigned int*) (vi->getValeur())) << " : " << endl;
-//
-//			if(ValeurString* vs = dynamic_cast<ValeurString*>(valeur))
-//				cout << attributs[i]->getNom() << "=" <<  *((string*) (vs->getValeur())) << endl;
-//
-//			i++;
-//		}
-//	}
-
-	for (list<Valeur*> em : empreintes)
-	{
-		int i = 0;
-		for (Valeur* valeur : em)
-		{
-
-			i++;
-		}
 	}
 
 	return true;
@@ -128,7 +97,7 @@ list<pair<string, double>> GestionMaladies::diagnostiquerEmpreinte(Empreinte aAn
 	return l; // TODO
 }
 
-Empreinte GestionMaladies::caracteriserMaladie(string nomMaladie)
+Empreinte GestionMaladies::caracteriserMaladie(string nomMaladie) // FIXME : comment retourner une empreinte vide dont on ne connait pas la taille ?
 {
 //	map<string, vector<int>>::iterator mapMaladieItr = ensembleMaladies.find(nomMaladie);
 //	if (mapMaladieItr != ensembleMaladies.end())
@@ -144,8 +113,8 @@ Empreinte GestionMaladies::caracteriserMaladie(string nomMaladie)
 //
 //	}
 	list<string> v;
-	Empreinte e(v);
-	return e; // TODO
+
+	return UsineEmpreinte::creerEmpreinte(v); // TODO
 }
 
 list<string> GestionMaladies::decouperString(string elementFichier)
@@ -190,6 +159,17 @@ GestionMaladies::~GestionMaladies()
 #endif
 } //----- End of ~GestionMaladies
 
+
+list<string> GestionMaladies::listerMaladies()
+{
+//	https://stackoverflow.com/questions/110157/how-to-retrieve-all-keys-or-values-from-a-stdmap-and-put-them-into-a-vector
+
+	list<string> cles;
+	for (pair<string,vector<unsigned int>> p : ensembleMaladies)
+		cles.push_back(p.first);
+	return cles;
+}
+
 //----------------------------------------------------------------- PRIVATE
 
 //----------------------------------------------------- Protected methods
@@ -214,7 +194,7 @@ vector<pair<string, string>> GestionMaladies::readDescription(string filename, b
 	{
 		getline(fs, line);
 
-		if (line != "AttributeName;AttributeType")
+		if (line.find("AttributeName;AttributeType"))
 		{
 			cerr << "Ce fichier de metadonnes est malforme." << endl;
 			return error;
@@ -234,7 +214,7 @@ vector<pair<string, string>> GestionMaladies::readDescription(string filename, b
 		getline(fs, current, '\r'); // YAY windows shitty CRLF
 		lineFields.second = current;
 
-		if (current.find(";"))
+		if (! current.find(";"))
 		{
 			cerr << "Ce fichier de metadonnees contient un \";\" innatendu au vu du format normal." << endl;
 			return error;
@@ -297,9 +277,8 @@ vector<vector<string>> GestionMaladies::readValues(string filename, unsigned int
 	unsigned int i;
 
 //	 https://stackoverflow.com/questions/1120140/how-can-i-read-and-parse-csv-files-in-c
-	while (fs)
-	{
-		i = 0;
+//	while (fs)
+//	{
 		while (getline(fs, currentLine, '\r'))
 		{
 			stringstream currentLineStream(currentLine);
@@ -309,12 +288,13 @@ vector<vector<string>> GestionMaladies::readValues(string filename, unsigned int
 			{
 				getline(currentLineStream, currentElement, ';');
 				lineFields.push_back(currentElement);
-				if (currentElement.empty())
+
+				if (currentElement.empty() && i < (fieldCount-1))
 				{
-					if (i != 0)
-						cerr << "Il manque une donnee dans le fichier de reference." << endl;
-					else
+					if (i == 0)
 						cerr << "Il manque un identifiant dans le fichier de reference." << endl;
+					else
+						cerr << "Il manque une donnee dans le fichier de reference." << endl;
 
 					return error;
 				}
@@ -326,7 +306,7 @@ vector<vector<string>> GestionMaladies::readValues(string filename, unsigned int
 			getline(fs, currentLine);
 			lineFields.clear();
 		}
-	}
+//	}
 
 	return fileList;
 }

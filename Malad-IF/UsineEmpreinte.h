@@ -16,7 +16,7 @@ using namespace std;
 #include "Attribut.h"
 #include "Empreinte.h"
 
- class UsineEmpreinte
+class UsineEmpreinte
 {
 	//----------------------------------------------------------------- PUBLIC
 
@@ -35,7 +35,7 @@ public:
 
 	//------------------------------------------PROTECTED
 protected:
-	vector <Attribut*> formatEmpreinte;
+	static vector<Attribut*> formatEmpreinte;
 
 };
 #endif // USINEEMPREINTE_H

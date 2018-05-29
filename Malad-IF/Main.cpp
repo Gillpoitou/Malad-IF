@@ -17,6 +17,7 @@
 #include "ValeurId.h"
 #include "ValeurDouble.h"
 #include "ValeurString.h"
+#include "GestionMaladies.h"
 
 using namespace std;
 
@@ -122,7 +123,7 @@ vector<vector<string>> readValues(string filename, int fieldCount, bool skipFirs
 
 
 
-int main()
+int oldmain()
 {
 	vector<pair<string, string>> desc = readDescription("HealthMeasurementDescription.txt", true);
 	vector<vector<string>> vals = readValues("HealthMeasurementsWithLabels.txt", desc.size() + 1 /* disease */, true);
@@ -193,3 +194,17 @@ int main()
 	return 0;
 }
 
+
+int main()
+{
+	GestionMaladies gm;
+	gm.initialiserApplication("HealthMeasurementDescription.txt", "HealthMeasurementsWithLabels.txt");
+	list<string> maladies = gm.listerMaladies();
+
+	for (string m : maladies)
+		if (!m.empty())
+		cout << "Maladie trouvée : " << m << endl;
+
+
+
+}

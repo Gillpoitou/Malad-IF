@@ -40,6 +40,7 @@ class GestionMaladies
 		list<pair<string, double>> diagnostiquerEmpreinte(Empreinte aAnalyser);
 		Empreinte caracteriserMaladie(string nomMaladie);
 		list<string> decouperString(string elementFichier);
+		list<string> listerMaladies();
 		
 		
 //-------------------------------------------- Constructors - destructor
