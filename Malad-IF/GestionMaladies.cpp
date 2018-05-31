@@ -1,14 +1,11 @@
-/*************************************************************************
- GestionMaladies  -  description
- -------------------
- start                : 25 mai 2018
- copyright            : (C) 2018 by lsterner
- *************************************************************************/
-
-//---------- Réalisation of the class <GestionMaladies> (fichier GestionMaladies.cpp) -------
-//---------------------------------------------------------------- INCLUDE
-//-------------------------------------------------------- System include
-using namespace std;
+/*
+ * GestionMaladies.cpp
+ *
+ *  Created on: 24 mai 2018
+ *      Author: lsilvestri
+ */
+ using namespace std;
+#include "GestionMaladies.h"
 #include <iostream>
 #include <array>
 #include <vector>
@@ -29,37 +26,27 @@ using namespace std;
 #include "ValeurString.h"
 #include "UsineEmpreinte.h"
 
-//------------------------------------------------------ Personal include
-#include "GestionMaladies.h"
 
-//--------------------------------------------------------------  Constants
+bool GestionMaladies::insererDonnees(Empreinte aAjouter,string maladie){
 
-//----------------------------------------------------------------- PUBLIC
+	ensembleReference.insert(ensembleReference.end(),aAjouter);
+	map<string,vector<unsigned int>>::iterator mapMaladieItr= ensembleMaladies.find(maladie);
+	if(mapMaladieItr != ensembleMaladies.end()){
 
-//----------------------------------------------------- Public methods
+/*		vector<unsigned int>index = */mapMaladieItr->second.push_back(ensembleReference.size()-1);
+//		index.insert(index.end(), ensembleReference.size()-1);
+	//	index.push_back(ensembleReference.size()-1);
+		//cout << "IDNEX SIZE:" << index.size() << endl;
 
-bool GestionMaladies::insererDonnees(Empreinte aAjouter, string maladie)
-{
-	ensembleReference.insert(ensembleReference.end(), aAjouter);
-	map<string, vector<unsigned int>>::iterator mapMaladieItr = ensembleMaladies.find(maladie);
-	if (mapMaladieItr != ensembleMaladies.end())
-	{
-
-		vector<unsigned int> index = mapMaladieItr->second;
-		index.insert(index.end(), ensembleReference.size() - 1);
-
-	}
-	else
-	{
+	}else{
 
 		vector<unsigned int> index;
-		index.insert(index.end(), ensembleReference.size() - 1);
-		const pair<string, vector<unsigned int>> element = make_pair(maladie, index);
-		ensembleMaladies.insert(ensembleMaladies.end(), element);
+		index.insert(index.end(),ensembleReference.size()-1);
+		const pair<string,vector<unsigned int>> element = make_pair(maladie,index);
+		ensembleMaladies.insert(ensembleMaladies.end(),element);
 	}
 
 	return true;
-
 }
 
 bool GestionMaladies::initialiserApplication(string nomFichierRef, string nomFichierMeta)
@@ -97,24 +84,14 @@ list<pair<string, double>> GestionMaladies::diagnostiquerEmpreinte(Empreinte aAn
 	return l; // TODO
 }
 
-Empreinte GestionMaladies::caracteriserMaladie(string nomMaladie) // FIXME : comment retourner une empreinte vide dont on ne connait pas la taille ?
-{
-//	map<string, vector<int>>::iterator mapMaladieItr = ensembleMaladies.find(nomMaladie);
-//	if (mapMaladieItr != ensembleMaladies.end())
-//	{
-//
-//		vector<int> indexEmpreintes = mapMaladieItr->second;
-//
-//		for (unsigned int i = 0; i < indexEmpreintes.size(); i++)
-//		{
-//			Empreinte empreinteCourante = ensembleReference[indexEmpreintes[i]];
-//
-//		}
-//
-//	}
-	list<string> v;
+Empreinte GestionMaladies::caracteriserMaladie(string nomMaladie){
 
-	return UsineEmpreinte::creerEmpreinte(v); // TODO
+	list<Empreinte> empreintesMalades;
+
+	for (unsigned int i : ensembleMaladies[nomMaladie])
+		empreintesMalades.push_back(ensembleReference[i]);
+
+	return usineEmpreinte.moyenner(empreintesMalades);
 }
 
 list<string> GestionMaladies::decouperString(string elementFichier)
@@ -130,36 +107,6 @@ list<string> GestionMaladies::decouperString(string elementFichier)
 
 	return champsLigne;
 }
-
-//-------------------------------------------- Constructors - destructor
-GestionMaladies::GestionMaladies(const GestionMaladies & unGestionMaladies)
-// Algorithme :
-//
-{
-#ifdef MAP
-	cout << "Calling copy constructor of <GestionMaladies>" << endl;
-#endif
-} //----- Fin de GestionMaladies (constructeur de copie)
-
-GestionMaladies::GestionMaladies()
-// Algorithme :
-//
-{
-#ifdef MAP
-	cout << "Calling constructor of <GestionMaladies>" << endl;
-#endif
-} //----- Fin de GestionMaladies
-
-GestionMaladies::~GestionMaladies()
-// Algorithme :
-//
-{
-#ifdef MAP
-	cout << "Calling destructor of <GestionMaladies>" << endl;
-#endif
-} //----- End of ~GestionMaladies
-
-
 list<string> GestionMaladies::listerMaladies()
 {
 //	https://stackoverflow.com/questions/110157/how-to-retrieve-all-keys-or-values-from-a-stdmap-and-put-them-into-a-vector
@@ -170,10 +117,18 @@ list<string> GestionMaladies::listerMaladies()
 	return cles;
 }
 
-//----------------------------------------------------------------- PRIVATE
 
-//----------------------------------------------------- Protected methods
+GestionMaladies::GestionMaladies() {
+	//TODO : Faire une classe abstraite.
 
+}
+
+
+GestionMaladies::~GestionMaladies() {
+	// TODO Auto-generated destructor stub
+}
+
+// des méthodes privées
 vector<pair<string, string>> GestionMaladies::readDescription(string filename, bool skipFirstLine)
 {
 	ifstream fs;

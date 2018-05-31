@@ -13,6 +13,7 @@
 #include <string>
 
 #include "Attribut.h"
+#include "ValeurString.h"
 
 using namespace std;
 //------------------------------------------------------------- Constants 
@@ -37,6 +38,7 @@ public:
 	// Contrat :
 	//
 
+	ValeurString* moyenner(list<Valeur*>);
 
 //------------------------------------------------- Operator overload
 

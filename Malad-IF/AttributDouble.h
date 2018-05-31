@@ -14,6 +14,7 @@
 #include <string>
 
 #include "Attribut.h"
+#include "ValeurDouble.h"
 
 using namespace std;
 
@@ -38,6 +39,8 @@ public:
     //
     // Contrat :
     //
+
+	virtual ValeurDouble* moyenner(list<Valeur*>);
 
 
 //-------------------------------------------- Constructors - destructor

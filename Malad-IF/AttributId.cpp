@@ -2,7 +2,7 @@
 #include "AttributId.h"
 
 #include <string>
-
+#include <iostream>
 #include "ValeurId.h"
 using namespace std;
 
@@ -18,3 +18,19 @@ Valeur* AttributId::creerValeur(string valeur)
 
 AttributId::~AttributId()
 {}
+
+ValeurId* AttributId::moyenner(list<Valeur*> valeurs)
+{
+	unsigned int sum = 0;
+
+	for (Valeur* valeur : valeurs)
+	{
+		ValeurId* vi = dynamic_cast<ValeurId*>(valeur);
+
+		sum += *(vi->getValeur());
+	}
+
+	sum /= valeurs.size();
+
+	return new ValeurId(sum); // TODO
+}

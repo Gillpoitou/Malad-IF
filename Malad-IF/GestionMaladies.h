@@ -1,81 +1,53 @@
-/*************************************************************************
- GestionMaladies  -  description
- -------------------
- start                : 25 mai 2018
- copyright            : (C) 2018 by lsterner
- *************************************************************************/
-
-//---------- Interface of the class <GestionMaladies> (fichier GestionMaladies.h) ------
-#if ! defined ( GESTIONMALADIES_H_ )
-#define GESTIONMALADIES_H_
-
-//--------------------------------------------------- Used interfaces
-#include <list>
-#include <map>
-#include <vector>
-
-#include "Empreinte.h"
+/*
+ * GestionMaladies.h
+ *
+ *  Created on: 24 mai 2018
+ *      Author: lsilvestri
+ */
 
 using namespace std;
 
+#ifndef GESTIONMALADIES_H_
+#define GESTIONMALADIES_H_
+#include "UsineEmpreinte.h"
+#include <string>
+#include <map>
+#include <vector>
+#include <list>
 
-//------------------------------------------------------------- Constants 
 
-//------------------------------------------------------------------ Types 
 
-//------------------------------------------------------------------------ 
-// Rôle of the class <GestionMaladies>
-//
-//
-//------------------------------------------------------------------------ 
+class GestionMaladies {
 
-class GestionMaladies
-{
-//----------------------------------------------------------------- PUBLIC
-		
-	public:
-//----------------------------------------------------- Public methods
-		bool insererDonnees(Empreinte aAjouter, string maladie);
-		bool initialiserApplication(string nomFichierRef, string nomFichierMeta);
-		list<pair<string, double>> diagnostiquerEmpreinte(Empreinte aAnalyser);
-		Empreinte caracteriserMaladie(string nomMaladie);
-		list<string> decouperString(string elementFichier);
-		list<string> listerMaladies();
-		
-		
-//-------------------------------------------- Constructors - destructor
-		GestionMaladies(const GestionMaladies & unGestionMaladies);
-		// Mode d'emploi (constructeur de copie) :
-		//
-		// Contrat :
-		//
-		
-		GestionMaladies();
-		// Mode d'emploi :
-		//
-		// Contrat :
-		//
-		
-		virtual ~GestionMaladies();
-		// Mode d'emploi :
-		//
-		// Contrat :
-		//
-		
-//------------------------------------------------------------------ PRIVATE 
-		
-	protected:
-//----------------------------------------------------- Protected fields
-		vector<Empreinte> ensembleReference;
-		map<string, vector<unsigned int>> ensembleMaladies;
+public:
 
-//----------------------------------------------------- Private methods
-		vector<vector<string>> readValues(string filename, unsigned int fieldCount, bool skipFirstLine);
-		vector<pair<string, string>> readDescription(string filename, bool skipFirstLine);
+	bool insererDonnees(Empreinte aAjouter,string maladie);
+
+	bool initialiserApplication(string nomFichierref, string nomFichierMaladies);
+
+	list<pair<string,double>> diagnostiquerEmpreinte(Empreinte aAnalyser);
+
+	Empreinte caracteriserMaladie(string nomMaladie);
+
+	list<string> decouperString(string elementFichier);
+	
+	list<string> listerMaladies();
+
+
+	//Constructeurs, destructeurs
+	GestionMaladies();
+	GestionMaladies(list<string> elementsFichier);
+	virtual ~GestionMaladies();
+
+protected:
+	vector<Empreinte>ensembleReference;
+	map<string,vector<unsigned int>> ensembleMaladies;
+	UsineEmpreinte usineEmpreinte;
+	
+	//methodes privees
+	vector<vector<string>> readValues(string filename, unsigned int fieldCount, bool skipFirstLine);
+	vector<pair<string, string>> readDescription(string filename, bool skipFirstLine);
 
 };
 
-
-//--------------------------- Other independant definitions for <GestionMaladies>
-
-#endif // GESTIONMALADIES_H_
+#endif /* GESTIONMALADIES_H_ */

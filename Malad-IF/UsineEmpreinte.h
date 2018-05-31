@@ -16,7 +16,7 @@ using namespace std;
 #include "Attribut.h"
 #include "Empreinte.h"
 
-class UsineEmpreinte
+ class UsineEmpreinte
 {
 	//----------------------------------------------------------------- PUBLIC
 
@@ -27,15 +27,22 @@ public:
 
 	static Empreinte creerEmpreinte(list<string> elementsFichier);
 	//Cr�er une empreinte � partir d'une liste de valeurs
+
+	static Empreinte creerEmpreinte();
+	//Cree une empreinte vide
 	static string recupererIntituleAttribut(int numAttribut);
 	//Permet de r�cup�rer le nom d'un attribut en utilisant son index
+
+
+	static Empreinte moyenner(list<Empreinte> empreintes);
+	//Permet de moyennes une empreinte
 	//----------------------------------------------------Constructeurs-Destructeur
 	UsineEmpreinte();
 	virtual ~UsineEmpreinte();
 
 	//------------------------------------------PROTECTED
 protected:
-	static vector<Attribut*> formatEmpreinte;
+	static vector <Attribut*> formatEmpreinte;
 
 };
 #endif // USINEEMPREINTE_H

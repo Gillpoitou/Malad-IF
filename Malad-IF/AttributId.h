@@ -13,6 +13,7 @@
 #include <string>
 
 #include "Attribut.h"
+#include "ValeurId.h"
 
 using namespace std;
 //------------------------------------------------------------- Constants 
@@ -37,7 +38,7 @@ public:
 	// Contrat :
 	//
 
-
+	ValeurId* moyenner(list<Valeur*>);
 
 
 //-------------------------------------------- Constructors - destructor

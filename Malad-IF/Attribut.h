@@ -11,6 +11,7 @@
 
 //--------------------------------------------------- Used interfaces
 #include <string>
+#include <list>
 
 #include "Valeur.h"
 //------------------------------------------------------------- Constants 
@@ -31,6 +32,8 @@ public:
 // ------------------------------------------------------------- Methods
 
 	virtual Valeur* creerValeur(string) = 0;
+
+	virtual Valeur* moyenner(list<Valeur*>) = 0;
 
 	string getNom();
 //-------------------------------------------- Constructors - destructor
