@@ -21,11 +21,10 @@ class GestionMaladies {
 
 public:
 
+	list<pair<string,double>> diagnostiquerEmpreinte(Empreinte aAnalyser);
 	bool insererDonnees(Empreinte aAjouter,string maladie);
 
 	bool initialiserApplication(string nomFichierref, string nomFichierMaladies);
-
-	list<pair<string,double>> diagnostiquerEmpreinte(Empreinte aAnalyser);
 
 	Empreinte caracteriserMaladie(string nomMaladie);
 

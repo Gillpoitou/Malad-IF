@@ -33,12 +33,12 @@ class ValeurId : public Valeur
 
 public:
 //----------------------------------------------------- Public methods
-	unsigned int* getValeur();
+	void* getValeur();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
-
+	void setValeur(void * val);
 
 
 

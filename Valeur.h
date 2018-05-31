@@ -36,7 +36,7 @@ public:
     //
     // Contrat :
     //
-
+	virtual void setValeur(void * val) = 0;
 
 //------------------------------------------------- Operator overload
 //    Valeur & operator = ( const Valeur & unValeur );

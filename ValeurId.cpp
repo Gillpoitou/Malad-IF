@@ -8,10 +8,15 @@ ValeurId::ValeurId(unsigned int val)
 }
 
 
-unsigned int* ValeurId::getValeur()
+void* ValeurId::getValeur()
 {
 	return valeur;
 }
 
 ValeurId::~ValeurId()
 {}
+
+void ValeurId::setValeur(void* val){
+
+	*valeur = *(int*)val;
+}

@@ -35,12 +35,12 @@ class ValeurString : public Valeur
 
 public:
 //----------------------------------------------------- Public methods
-	string* getValeur();
+	void* getValeur();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
-
+	void setValeur(void* val);
 
 
 //-------------------------------------------- Constructors - destructor

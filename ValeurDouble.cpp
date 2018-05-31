@@ -9,7 +9,12 @@ ValeurDouble::ValeurDouble(double valeur)
 ValeurDouble::~ValeurDouble()
 {}
 
-double* ValeurDouble::getValeur()
+void* ValeurDouble::getValeur()
 {
 	return valeur;
+}
+
+void ValeurDouble::setValeur(void * val){
+
+	*valeur = *(double*)val;
 }

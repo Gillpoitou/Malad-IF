@@ -76,46 +76,103 @@ bool GestionMaladies::initialiserApplication(string nomFichierRef, string nomFic
 	return true;
 }
 
-list<pair<string, double>> GestionMaladies::diagnostiquerEmpreinte(Empreinte aAnalyser)
-{
-	list<pair<string, double>> l;
-	return l; // TODO
-}
 
 Empreinte GestionMaladies::caracteriserMaladie(string nomMaladie){
 
 	map<string,vector<unsigned int>>::iterator mapMaladieItr= ensembleMaladies.find(nomMaladie);
+	Empreinte resultat = usineEmpreinte.creerEmpreinte();
 	if(mapMaladieItr != ensembleMaladies.end()){
 		//TODO : gerer le cas ou la maladie n'a pas d'empreintes associées
 		vector<unsigned int> indexEmpreintes = mapMaladieItr->second;
 
-		Empreinte resultat = usineEmpreinte.creerEmpreinte();
+
 		list<Valeur*> *valeurResult = resultat.getValeurs();
+		list<Valeur*>::iterator parcoursResult;
 		for(unsigned int i = 0 ; i < indexEmpreintes.size() ; i++){
 			Empreinte empreinteCourante = ensembleReference[indexEmpreintes[i]];
 			list<Valeur*>*valeursCourantes = empreinteCourante.getValeurs();
 			list<Valeur*>::iterator parcours;
+			parcoursResult = (*valeurResult).begin();
 			for(parcours = valeursCourantes->begin();parcours!= valeursCourantes->end();parcours++){
+				//Creation d'un iterateur sur l'empreinte de resultat
+
 				if(ValeurDouble* vd = dynamic_cast<ValeurDouble*>(*parcours))
 				{
-
+					//ajout de la valeur à l'empreinte resultat
+					double a = *(double*)((*parcoursResult)->getValeur()) + *(double*)((vd)->getValeur());
+					void* b = &a;
+					(*parcoursResult)->setValeur(b);
 				}
 
 				if(ValeurId* vi = dynamic_cast<ValeurId*>(*parcours))
 				{
-					}
-
-				if(ValeurString* vs = dynamic_cast<ValeurString*>(*parcours))
-				{
+					int a = *(int*)((*parcoursResult)->getValeur())+ *(int*)((vi)->getValeur());
+					void* b = &a;
+					(*parcoursResult)->setValeur(b);
 				}
 
+				if(dynamic_cast<ValeurString*>(*parcours))
+				{
+					//TODO faire les string
+				}
+				parcoursResult++;
+
+			}
+		}
+		//division des valeurs de Result pour avoir une moyenne
+		for(parcoursResult = (*valeurResult).begin();parcoursResult!=(*valeurResult).end();parcoursResult++){
+			if(dynamic_cast<ValeurId*>(*parcoursResult)){
+
+					int a = (*(int*)((*parcoursResult)->getValeur()))/ensembleReference.size();
+					void* b = &a;
+					(*parcoursResult)->setValeur(b);
+				//**parcoursResult = **parcoursResult/(ensembleReference.size());//On considère que tous les cahamps d'une empreinte sont toujours remplis
+			}
+			if(dynamic_cast<ValeurDouble*>(*parcoursResult))
+				{
+					double a = (*(double*)((*parcoursResult)->getValeur()))/ensembleReference.size();
+					void* b = &a;
+					(*parcoursResult)->setValeur(b);
+				}
+		}
+		return resultat;
+	}
+	else{
+		return resultat;
+	}
+
+}
+
+list<pair<string,double>> GestionMaladies::diagnostiquerEmpreinte(Empreinte aAnalyser){
+	list<Valeur*> *listeRef = ensembleReference[0].getValeurs();
+	int taille = listeRef->size();//TODO verifier EnsRef pas vide
+	void* min[taille];
+	void* max[taille];
+	//initialisation des tableaux min et max
+	list<Valeur*>::iterator parcoursVal;
+	int j =0;
+	for(parcoursVal = listeRef->begin();parcoursVal!=listeRef->end();parcoursVal++)
+			{
+				min[j] = (*parcoursVal)->getValeur();
+				max[j] = (*parcoursVal)->getValeur();
+				j++;
 			}
 
-
+	for(unsigned int i=1;i<ensembleReference.size();i++)
+	{
+		list<Valeur*> * valeurs = ensembleReference[i].getValeurs();
+		j=0;
+		for(parcoursVal = valeurs->begin();parcoursVal!=valeurs->end();parcoursVal++)
+		{
+			if(*min[j]> *(*parcoursVal)->getValeur()){
+				min[j] = (*parcoursVal)->getValeur();
+			}
+			if(*max[j]< *(*parcoursVal)->getValeur()){
+				max[j] = (*parcoursVal)->getValeur();
+			}
 		}
 
 	}
-
 }
 
 list<string> GestionMaladies::decouperString(string elementFichier)

@@ -27,11 +27,13 @@ class ValeurDouble : public Valeur
 
 public:
 //----------------------------------------------------- Public methods
-    double* getValeur();
+    void* getValeur();
     // Mode d'emploi :
     //
     // Contrat :
     //
+
+    void setValeur(void* val);
 
 
 

@@ -9,7 +9,12 @@ ValeurString::ValeurString(string val)
 ValeurString::~ValeurString()
 {}
 
-string* ValeurString::getValeur()
+void* ValeurString::getValeur()
 {
 	return valeur;
+}
+
+void ValeurString::setValeur(void* val){
+
+	*valeur = *(string*)val;
 }
