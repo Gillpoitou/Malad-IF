@@ -1,17 +1,19 @@
 /*************************************************************************
-                           Valeur  -  description
+                           IdValeur  -  description
                              -------------------
     start                : 24 mai 2018
     copyright            : (C) 2018 by lsterner
 *************************************************************************/
 
-//---------- Interface of the class <Valeur> (fichier Valeur.h) ------
-#if ! defined ( VALEUR_H_ )
-#define VALEUR_H_
+//---------- Interface of the class <IdValeur> (fichier IdValeur.h) ------
+#if ! defined ( VALEURID_H_ )
+#define VALEURID_H_
 
 //--------------------------------------------------- Used interfaces
-
 #include <string>
+
+#include "Valeur.h"
+
 
 using namespace std;
 
@@ -20,48 +22,40 @@ using namespace std;
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle of the class <Valeur>
+// Rôle of the class <IdValeur>
 //
 //
 //------------------------------------------------------------------------ 
 
-class Valeur
+class ValeurId : public Valeur
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Public methods
-	virtual void* getValeur() = 0;
+	void* getValeur();
 	// Mode d'emploi :
-    //
-    // Contrat :
-    //
-	virtual void setValeur(void * val) = 0;
+	//
+	// Contrat :
+	//
+	void setValeur(void * val);
 
-//------------------------------------------------- Operator overload
-//    Valeur & operator = ( const Valeur & unValeur );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 
 //-------------------------------------------- Constructors - destructor
-//    Valeur ( const Valeur & unValeur );
+    ValeurId ( const ValeurId & unIdValeur );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-//    Valeur ( );
+    ValeurId(unsigned int valeur);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-
-    virtual ~Valeur ( );
+    virtual ~ValeurId ();
     // Mode d'emploi :
     //
     // Contrat :
@@ -70,13 +64,12 @@ public:
 //------------------------------------------------------------------ PRIVATE 
 
 protected:
-//----------------------------------------------------- Protected fields
-    void* valeur;
-
+//----------------------------------------------------- Protected methods
+    unsigned int* valeur;
 //----------------------------------------------------- Private methods
 
 };
 
-//--------------------------- Other independant definitions for <Valeur>
+//--------------------------- Other independant definitions for <IdValeur>
 
-#endif // VALEUR_H_
+#endif // VALEURID_H_

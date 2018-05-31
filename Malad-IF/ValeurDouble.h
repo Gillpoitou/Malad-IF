@@ -1,67 +1,51 @@
 /*************************************************************************
-                           Valeur  -  description
+                           DoubleValeur  -  description
                              -------------------
     start                : 24 mai 2018
     copyright            : (C) 2018 by lsterner
 *************************************************************************/
 
-//---------- Interface of the class <Valeur> (fichier Valeur.h) ------
-#if ! defined ( VALEUR_H_ )
-#define VALEUR_H_
+//---------- Interface of the class <DoubleValeur> (fichier DoubleValeur.h) ------
+#if ! defined ( VALEURDOUBLE_H_ )
+#define VALEURDOUBLE_H_
 
 //--------------------------------------------------- Used interfaces
-
-#include <string>
-
-using namespace std;
-
+#include "Valeur.h"
 //------------------------------------------------------------- Constants 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle of the class <Valeur>
+// Rôle of the class <DoubleValeur>
 //
 //
 //------------------------------------------------------------------------ 
 
-class Valeur
+class ValeurDouble : public Valeur
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Public methods
-	virtual void* getValeur() = 0;
-	// Mode d'emploi :
-    //
-    // Contrat :
-    //
-	virtual void setValeur(void * val) = 0;
-
-//------------------------------------------------- Operator overload
-//    Valeur & operator = ( const Valeur & unValeur );
+    void* getValeur();
     // Mode d'emploi :
     //
     // Contrat :
     //
+
+    void setValeur(void* val);
+
 
 
 //-------------------------------------------- Constructors - destructor
-//    Valeur ( const Valeur & unValeur );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
 
-//    Valeur ( );
+	ValeurDouble(double val);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-
-    virtual ~Valeur ( );
+    virtual ~ValeurDouble ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -71,12 +55,12 @@ public:
 
 protected:
 //----------------------------------------------------- Protected fields
-    void* valeur;
+    double* valeur;
 
 //----------------------------------------------------- Private methods
 
 };
 
-//--------------------------- Other independant definitions for <Valeur>
+//--------------------------- Other independant definitions for <DoubleValeur>
 
-#endif // VALEUR_H_
+#endif // VALEURDOUBLE_H_
